@@ -1,0 +1,18 @@
+#03.png
+# É criada uma função separar_data recebendo como parâmetro dma.
+
+def separar_data(dma):
+    # Após o usuário pôr respectivamente o dia, mês e ano de seu nascimento, é feito um cálculo que separa em partes
+    # essas informaçoes.
+    # ano recebe o valor do resto da divisão do parâmetro dividido por 10000 resultando em 2002(ano em que o usuário nasceu), por exemplo.
+    a = dma % 10000
+    # dma recebe o quociente da divisão já que o 2002 foi retirado, restando 705(ano e mês em que o usuário nasceu, respectivamente), por exemplo.
+    dma //= 10000
+    # mês recebe o valor do resto da divisão do parâmetro dividio por 100, resultando em 05 (numero mês que o usuário nasceu).
+    m = dma % 100
+    # dma recebe o quociente da divisão já que o 05 foi retirado, restando apenas 7.
+    dma //= 100
+    # o dia recebe o resultado final do parâmetro, 7.
+    d = dma
+    # retorna o dia, mês e ano divididos (7, 5, 2002)
+    return d,m,a
