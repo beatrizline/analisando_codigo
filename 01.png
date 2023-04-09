@@ -1,0 +1,22 @@
+#01.png
+def main():
+    #Entrada de dados
+    # Uma variável nascimento é criada do tipo inteiro(int) solicitando data de nascimento no formato DDMMAAAA.
+    nascimento = int(input('Digite sua data de nascimento no formato DDMMAAAA: '))
+
+    #Processamento
+    #As variáveis chamam uma outra função para que as informações nesta sejam alocadas e postas dentro da outra.
+    dia, mes, _ = separar_data(nascimento)
+
+    #Semelhante a anterior, a variável meu_signo chama uma outra função(signo) para que as informações nesta sejam alocadas e postas dentro do parâmetro.
+    meu_signo = signo(dia, mes)
+
+    #Esta variável horoscopo_de_hoje chama uma outra função(horoscopo) a qual a informação da variável e posta dentro do parâmetro.
+    horoscopo_de_hoje = horoscopo(meu_signo)
+
+    #Saida de dados
+    #Imprime na tela o resultado, levando em consideração o signo do usuário.
+    print(horoscopo_de_hoje)
+
+# A primeira parte está relacionada com a função principal(def main) de um programa que imprime na tela o resultado referente a data, mês e ano solicitado(DDMMAAAA), indicando
+# qual o signo do usuário, além de detalhes sobre o mesmo.
