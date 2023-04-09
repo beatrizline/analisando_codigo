@@ -11,7 +11,7 @@ def main():
     #Semelhante a anterior, a variável meu_signo chama uma outra função(signo) para que as informações nesta sejam alocadas e postas dentro do parâmetro.
     meu_signo = signo(dia, mes)
 
-    #Esta variável horoscopo_de_hoje chama uma outra função(horoscopo) a qual a informação da variável e posta dentro do parâmetro.
+    #Esta variável horoscopo_de_hoje chama uma outra função(horoscopo) a qual a informação da variável é posta dentro do parâmetro.
     horoscopo_de_hoje = horoscopo(meu_signo)
 
     #Saida de dados
