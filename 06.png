@@ -1,0 +1,9 @@
+#06.png(último)
+
+# É criado uma função que recebe o parâmetro texto
+def remover_acentos(texto):
+    # da biblioteca/arquivo unicodedata, irá importar o arquivo/biblioteca normalize
+    from unicodedata import normalize
+    
+    # retorna o arquivo/biblioteca decodificado em ASCII e ignorando erros. 
+    return normalize('NFKD', texto).encode('ASCII', 'ignore').decode('ASCII')
