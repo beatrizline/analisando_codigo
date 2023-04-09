@@ -1,0 +1,8 @@
+#05.png
+
+# A variavel __name__ representa o nome do modulo no qual estamos trabalhando. Quando o modulo e executado por si so
+# __name__ e definido para __main__. Quando realizamos esta operaçao, o codigo que utilizamos no momento e posto como
+# principal para ser executado, desta forma, podemos diferencia-lo de quando esta sendo apenas importado.
+# Desta maneira, podemos tomar caminhos diferentes na parte da execuçao de um codigo.
+if __name__ == '__main__':
+    main()
