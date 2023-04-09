@@ -1,0 +1,47 @@
+#04.png
+# É criado uma nova função horóscopo recebendo como parâmetro signo_desejado
+
+def horoscopo(signo_desejado):
+    # urllib é um pacote que coleciona vários módulos para trabalhar com URL's.
+    # .request = para abrir e ler URLs
+    # SSl permite a comunicação criptografada entre um domínio de site e navegador.
+    import urllib.request, ssl
+    
+    # a variável recebe a função remover_acentos trazendo as informações do parâmetro signo_desejado para dentro dela,
+    # sendo todas as informações convertidas para letras minúsculas(.lower()).
+    signo_formatado = remover_acentos(signo_desejado).lower()
+    
+    # a variável recebe uma URL concatenando com a variável signo_formatado.
+        minha_url = 'https://www.horoscopovirtual.com.br/horoscopo/' + signo_formatado
+
+    # a variável requisiçao chama a urllib.request
+    requisicao = urllib.request.Request(
+        # a variavel url e posta dentro
+        url=minha_url,
+        # Um header é composto por um nome, um signal de : e um valor.
+        # User-agent = identificaçao que o navegador passa para os sites.
+        # Mozilla /5.0 - diz que o navegador e compativel com Mozilla.
+        headers={'User-Agent': 'Mozilla/5.0'}
+    )
+
+    # retornam um novo contexto com configurações padrão seguras
+    contexto_ssl = ssl.create_default_context()
+    contexto_ssl.check_hostname = False
+    contexto_ssl.verify_mode = ssl.CERT_NONE
+
+    # urlopen é capaz de buscar URLs usando uma variedade de protocolos diferentes, nesse caso, e
+    # necessário que busquem somente URL's com padrões seguros.
+    resposta = urllib.request.urlopen(requisicao, context= contexto_ssl)
+    
+    # A leitura da página deve ser feita em utf-8, no qual é o formato de codificação de caracteres
+    # necessários que envolve a interpretação de um navegador pra renderização dos textos na página específica.
+    pagina = resposta.read().decode('utf-8')
+    marcador_inicio = '<p class="text-pred">'
+    marcador_final = '<a class="webshare-link">Compartilhar</a>'
+
+    # Nesta parte, é contado o número de caracteres correspondentes ao signo para que seja lido na página com o marcador de ínicio e fim.
+    inicio = pagina.find(marcador_inicio) + len(marcador_inicio)
+    final = pagina.find(marcador_final, inicio)
+
+    # Ao final, retorna o signo do usuário com os dois pontos juntamente com as informações pegadas do site dito na linha 12, anterioramente.
+    return signo_desejado + ': ' + pagina[inicio:final].strip()
